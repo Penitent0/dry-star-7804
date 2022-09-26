@@ -49,10 +49,11 @@ RSpec.describe 'patient index page' do
   describe 'User Story 3, Patient Index Page' do
     it 'I see the names of all adult patients (age is greater than 18)' do
       visit patients_path
-      
+
       within "#patients-over_18" do
         expect(page).to_not have_content(@patient_11.name)
         expect(page).to_not have_content(@patient_9.name)
+        expect(page).to_not have_content(@patient_6.name)
         expect(page).to have_content(@patient_1.name)
         expect(page).to have_content(@patient_2.name)
         expect(page).to have_content(@patient_3.name)

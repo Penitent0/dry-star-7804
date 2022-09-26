@@ -44,7 +44,7 @@ RSpec.describe Patient, type: :model do
     end
     describe 'over_18 nethod' do
       it 'lists only patients over 18' do
-        require 'pry'; binding.pry
+        expect(Patient.over_18).to include(@patient_1, @patient_2, @patient_3, @patient_4, @patient_5, @patient_7, @patient_8, @patient_10, @patient_12)
       end
     end
   end
