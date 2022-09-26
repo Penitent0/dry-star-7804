@@ -70,7 +70,17 @@ RSpec.describe 'patient index page' do
       visit patients_path
 
       within "#patients-info" do
-        
+        expect(@patient_7.name).to appear_before(@patient_3.name)
+        expect(@patient_3.name).to appear_before(@patient_8.name)
+        expect(@patient_8.name).to appear_before(@patient_1.name)
+        expect(@patient_1.name).to appear_before(@patient_4.name)
+        expect(@patient_4.name).to appear_before(@patient_2.name)
+        expect(@patient_2.name).to appear_before(@patient_10.name)
+        expect(@patient_10.name).to appear_before(@patient_5.name)
+        expect(@patient_5.name).to appear_before(@patient_12.name)
+        expect(@patient_12.name).to_not appear_before(@patient_7.name)
+        expect(@patient_5.name).to_not appear_before(@patient_3.name)
+        expect(@patient_10.name).to_not appear_before(@patient_8.name)
       end
     end
   end
