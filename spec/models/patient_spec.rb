@@ -43,19 +43,17 @@ RSpec.describe Patient, type: :model do
       PatientDoctor.create!(doctor: @doctor_3, patient: @patient_12)
     end
 
-    describe 'over_18 nethod' do
+    describe 'over_18_names_alpha_asc nethod' do
       it 'lists only patients over 18' do
-        expect(Patient.over_18).to include(@patient_1, @patient_2, @patient_3, @patient_4, @patient_5, @patient_7, @patient_8, @patient_10, @patient_12)
+        expect(Patient.over_18_names_alpha_asc).to include(@patient_1, @patient_2, @patient_3, @patient_4, @patient_5, @patient_7, @patient_8, @patient_10, @patient_12)
       end
 
       it 'does not list patients under 18' do
-        expect(Patient.over_18).to_not include(@patient_6, @patient_9, @patient_11)
+        expect(Patient.over_18_names_alpha_asc).to_not include(@patient_6, @patient_9, @patient_11)
       end
-    end
 
-    describe 'names_alpha' do
-      it 'lists patient names in alphabetical order' do
-        expect(Patient.names_alpha).to eq([])
+      it 'lists names in alphabetical order asc' do
+        expect(Patient.over_18_names_alpha_asc).to eq([@patient_7, @patient_3, @patient_8,  @patient_1,  @patient_4,  @patient_2,  @patient_10,  @patient_5,  @patient_12])
       end
     end
   end

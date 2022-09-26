@@ -1,7 +1,7 @@
 <h2>Patient Index Page</h2>
 
 <div id="patients-info">
-  <% @patients.over_18.each do |patient| %>
+  <% @patients.over_18_names_alpha_asc.each do |patient| %>
     <p><%= patient.name %></p>
   <% end %>
 </div>
