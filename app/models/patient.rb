@@ -5,4 +5,8 @@ class Patient < ApplicationRecord
   def self.over_18
     Patient.where('age > 18').sort
   end
+
+  def self.names_alpha
+    require 'pry'; binding.pry
+  end
 end
