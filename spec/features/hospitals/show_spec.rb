@@ -126,7 +126,7 @@ RSpec.describe 'hospital show page' do
 
     it 'And I see the list of doctors is ordered from most number of patients to least number of patients' do
       visit hospital_path(@hospital_1)
-      save_and_open_page
+
       within "#doctor-info" do
         expect(@doctor_2.name).to appear_before(@doctor_3.name)
         expect(@doctor_3.name).to appear_before(@doctor_1.name)
