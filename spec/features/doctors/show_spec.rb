@@ -151,4 +151,53 @@ RSpec.describe 'doctor show page' do
       end
     end
   end
+
+  # User Story 2, Remove a Patient from a Doctor
+  # ​
+  # As a visitor
+  # When I visit a Doctor's show page
+  # Next to each patient's name, I see a button to remove that patient from that doctor's caseload
+  # When I click that button for one patient
+  # I'm brought back to the Doctor's show page
+  # And I no longer see that patient's name listed
+
+  describe 'User Story 2, Remove a Patient from a Doctor' do
+    it 'When I click that button for one patient Im brought back to the Doctors show page' do
+      visit doctor_path(@doctor_1)
+
+      within "#doctor-patient-info" do
+        click_on "Remove Patient #{@patient_1.name}"
+      end
+
+      expect(current_path).to eq(doctor_path(@doctor_1))
+
+      within "#doctor-patient-info" do
+        expect(page).to_not have_content(@patient_1.name)
+      end
+
+      visit doctor_path(@doctor_2)
+
+      within "#doctor-patient-info" do
+        click_on "Remove Patient #{@patient_5.name}"
+      end
+
+      expect(current_path).to eq(doctor_path(@doctor_2))
+
+      within "#doctor-patient-info" do
+        expect(page).to_not have_content(@patient_5.name)
+      end
+
+      visit doctor_path(@doctor_3)
+
+      within "#doctor-patient-info" do
+        click_on "Remove Patient #{@patient_10.name}"
+      end
+
+      expect(current_path).to eq(doctor_path(@doctor_3))
+
+      within "#doctor-patient-info" do
+        expect(page).to_not have_content(@patient_10.name)
+      end
+    end
+  end
 end

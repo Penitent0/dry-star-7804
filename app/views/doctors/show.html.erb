@@ -12,6 +12,6 @@
 <br>
 <div id="doctor-patient-info">
   <% @doctor.patients.each do |patient| %>
-    <p><%= patient.name  %></p>
+    <p><%= patient.name %> <%= button_to "Remove Patient #{patient.name}", [@doctor, patient], method: :delete %></p>
   <% end %>
 </div>
